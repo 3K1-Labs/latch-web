@@ -1,0 +1,30 @@
+[
+   {
+    "relation": ["delegate_permission/common.handle_all_urls",
+    "delegate_permission/common.get_login_creds"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "app.getlatch.app",
+      "sha256_cert_fingerprints": [
+        "2F:08:08:2B:93:47:B1:23:16:D9:4D:B1:70:ED:E8:F7:49:8A:2D:B9:29:E6:E7:D6:55:A5:6D:58:93:9C:89:51",
+        "80:58:F0:0E:B7:2C:E2:C2:97:48:C3:83:9E:07:4F:9E:49:3B:42:78:61:61:1B:1F:0D:40:E0:DC:2A:38:C4:83",
+        "FA:C6:17:45:DC:09:03:78:6F:B9:ED:E6:2A:96:2B:39:9F:73:48:F0:BB:6F:89:9B:83:32:66:75:91:03:3B:9C",
+         "BE:38:DA:1F:7B:36:2B:25:79:54:D8:A7:D5:3B:8D:5B:D1:9B:C8:B2:59:87:22:14:E2:9E:22:37:E2:00:94:67"
+      ]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls",
+    "delegate_permission/common.get_login_creds"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "qa.getlatch.app",
+      "sha256_cert_fingerprints": [
+        "BE:38:DA:1F:7B:36:2B:25:79:54:D8:A7:D5:3B:8D:5B:D1:9B:C8:B2:59:87:22:14:E2:9E:22:37:E2:00:94:67",
+         "2F:08:08:2B:93:47:B1:23:16:D9:4D:B1:70:ED:E8:F7:49:8A:2D:B9:29:E6:E7:D6:55:A5:6D:58:93:9C:89:51",
+        "80:58:F0:0E:B7:2C:E2:C2:97:48:C3:83:9E:07:4F:9E:49:3B:42:78:61:61:1B:1F:0D:40:E0:DC:2A:38:C4:83",
+        "FA:C6:17:45:DC:09:03:78:6F:B9:ED:E6:2A:96:2B:39:9F:73:48:F0:BB:6F:89:9B:83:32:66:75:91:03:3B:9C"
+      ]
+    }
+  }
+]

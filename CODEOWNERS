@@ -1,0 +1,5 @@
+# public/.well-known/ is the passkey proof surface for every Latch client
+# (mobile, web, extension). A change or accidental removal here breaks
+# passkey sign-in for every existing user. Do not edit without the wallet
+# team's review. See docs/passkey-domain-transition.md in latch-mobile.
+/public/.well-known/ @3K1-Labs/wallet
