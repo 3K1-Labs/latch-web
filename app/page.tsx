@@ -15,7 +15,6 @@ export default function Home() {
       }}
     >
       <Image src="/latch.png" alt="Latch" width={96} height={96} priority style={{ borderRadius: '20%' }} />
-      <p style={{ opacity: 0.6, color: '#fafafa' }}>Coming soon.</p>
     </main>
   );
 }
