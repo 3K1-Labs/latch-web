@@ -31,3 +31,68 @@ bun run dev
 
 `bun run build` runs the `.well-known` integrity check first and fails loudly
 if it doesn't pass.
+
+## Native waitlist backend
+
+The waitlist API uses Neon Postgres through Drizzle and sends double-opt-in
+confirmation email through Resend. The homepage does not call these endpoints
+yet; the final signup UI will be integrated separately.
+
+### Server environment
+
+Configure these values in the local shell or deployment environment. Never
+prefix them with `NEXT_PUBLIC_` or commit real values.
+
+```text
+DATABASE_URL=postgresql://runtime-user:password@host/database?sslmode=require
+DATABASE_MIGRATION_URL=postgresql://migration-user:password@host/database?sslmode=require
+RESEND_API_KEY=re_example
+WAITLIST_PUBLIC_ORIGIN=https://uselatch.app
+WAITLIST_FROM_EMAIL=Latch <updates@uselatch.app>
+WAITLIST_REPLY_TO=hello@uselatch.app
+WAITLIST_UNSUBSCRIBE_SECRET=generate-at-least-32-random-bytes
+WAITLIST_CONSENT_VERSION=road-to-mainnet-v1
+```
+
+`WAITLIST_REPLY_TO` is optional. `WAITLIST_PUBLIC_ORIGIN` must use HTTPS except
+for `http://localhost` during local development. Generate the unsubscribe
+secret with a cryptographically secure tool, for example `openssl rand -base64
+32`.
+
+Use a pooled, least-privileged Neon connection for `DATABASE_URL`. Keep the
+owner or migration connection separate in `DATABASE_MIGRATION_URL` and apply
+migrations explicitly rather than during a Next.js build:
+
+```bash
+bun run db:generate
+bun run db:migrate
+```
+
+The checked-in SQL under `drizzle/` is the deployable migration artifact.
+
+### API contract
+
+All three endpoints accept JSON only and limit the request body to 1 KiB:
+
+```text
+POST /api/waitlist              { "email": "person@example.com" }
+POST /api/waitlist/confirm      { "token": "confirmation-token" }
+POST /api/waitlist/unsubscribe  { "token": "signed-unsubscribe-token" }
+```
+
+No endpoint mutates subscriber state on `GET`. The future confirmation and
+unsubscribe pages must require an explicit user action before calling the
+corresponding `POST` endpoint.
+
+Configure a Vercel WAF fixed-window rate limit for `POST /api/waitlist` before
+launch. The application independently enforces a 15-minute confirmation resend
+cooldown and a maximum of three confirmation attempts per email in a fixed
+24-hour window beginning with the first attempt.
+
+Every syntactically valid signup request returns HTTP `202` with the same body,
+regardless of subscriber state or an internal database/email-provider failure.
+This prevents the public response from becoming an email-enumeration signal. A
+provider failure whose delivery result is ambiguous or retryable keeps the
+current token reservation and cooldown, so an immediate retry cannot issue a
+new token. Deterministic provider rejections release the reservation for a safe
+retry, while the fixed-window attempt cap continues to apply.
