@@ -49,8 +49,7 @@ DATABASE_URL=postgresql://runtime-user:password@host/database?sslmode=require
 DATABASE_MIGRATION_URL=postgresql://migration-user:password@host/database?sslmode=require
 RESEND_API_KEY=re_example
 WAITLIST_PUBLIC_ORIGIN=https://uselatch.app
-WAITLIST_FROM_EMAIL=Latch <updates@uselatch.app>
-WAITLIST_REPLY_TO=hello@uselatch.app
+WAITLIST_FROM_EMAIL=Latch <uselatch@3k1labs.io>
 WAITLIST_UNSUBSCRIBE_SECRET=generate-at-least-32-random-bytes
 WAITLIST_CONSENT_VERSION=road-to-mainnet-v1
 ```
@@ -61,9 +60,9 @@ secret with a cryptographically secure tool, for example `openssl rand -base64
 32`.
 
 For production deliverability, use the public `https://uselatch.app` origin and
-a Resend-verified sender on the same `uselatch.app` domain. A real email sent
-from another domain with a localhost confirmation link is useful for functional
-testing, but mailbox providers may classify that domain/link mismatch as spam.
+a Resend-verified sender on the company-owned `3k1labs.io` domain. A real email
+containing a localhost confirmation link is useful for functional testing, but
+mailbox providers may classify that local link as suspicious.
 
 Use a pooled, least-privileged Neon connection for `DATABASE_URL`. Keep the
 owner or migration connection separate in `DATABASE_MIGRATION_URL` and apply
