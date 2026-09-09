@@ -1,0 +1,836 @@
+.page {
+  --page-background: linear-gradient(180deg, #fefaf0 0%, #fff8e1 100%);
+  --heading: #000;
+  --input-background: #fbf4d8;
+  --muted: #706f6f;
+  --toggle-background: #f3f3f3;
+  --toggle-shadow: inset -3px 2px 4px rgb(0 0 0 / 12%);
+  position: relative;
+  min-height: max(100svh, 1024px);
+  overflow: hidden;
+  background: var(--page-background);
+  color: var(--heading);
+  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial,
+    sans-serif;
+  font-synthesis: none;
+}
+
+.page[data-theme="dark"] {
+  --page-background: #020202;
+  --heading: #fff;
+  --input-background: #1a1a1a;
+  --toggle-background: #1a1a1a;
+  --toggle-shadow: inset -3px 2px 4px rgb(41 9 17 / 84%);
+}
+
+.header {
+  position: absolute;
+  z-index: 10;
+  top: 56px;
+  left: 50%;
+  display: flex;
+  width: min(1121.75px, calc(100% - 64px));
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  transform: translateX(-50%);
+}
+
+.logo {
+  display: block;
+  width: 152.416px;
+  height: 29.761px;
+}
+
+.themeToggle {
+  position: relative;
+  display: flex;
+  flex: 0 0 auto;
+  gap: 4px;
+  align-items: center;
+  padding: 5.767px;
+  overflow: hidden;
+  border: 0;
+  border-radius: 144.167px;
+  background: var(--toggle-background);
+  box-shadow: var(--toggle-shadow);
+  cursor: pointer;
+}
+
+.themeToggle:focus-visible {
+  outline: 3px solid #76b101;
+  outline-offset: 4px;
+}
+
+.sunOption,
+.moonOption {
+  position: relative;
+  display: block;
+  width: 51.9px;
+  height: 51.9px;
+  flex: 0 0 51.9px;
+  border-radius: 144.167px;
+}
+
+.sunOption {
+  background: #76b101;
+}
+
+.sunIcon,
+.moonIcon {
+  position: absolute;
+  top: 50%;
+  left: calc(50% - 0.48px);
+  width: 34.6px;
+  height: 34.6px;
+  transform: translate(-50%, -50%);
+}
+
+.moonIcon {
+  overflow: hidden;
+}
+
+.asset {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+}
+
+.coverAsset {
+  object-fit: cover;
+}
+
+.hero {
+  position: absolute;
+  top: 198px;
+  left: calc(50% - 0.5px);
+  display: flex;
+  width: 923px;
+  flex-direction: column;
+  align-items: center;
+  transform: translateX(-50%);
+}
+
+.mascotFrame {
+  position: relative;
+  width: 297px;
+  height: 296.588px;
+  flex: 0 0 auto;
+  margin-bottom: -45px;
+  overflow: hidden;
+}
+
+.leftArm,
+.rightArm,
+.mascotBody,
+.mascotShadow,
+.sparkleLarge,
+.sparkleSmall {
+  position: absolute;
+  display: block;
+}
+
+.leftArm {
+  inset: 51.03% 67.16% 39.95% 11.1%;
+}
+
+.rightArm {
+  inset: 50.88% 10.54% 39.95% 68.15%;
+}
+
+.mascotBody {
+  top: 42.07px;
+  left: 78.98px;
+  width: 142.523px;
+  height: 189.363px;
+}
+
+.mascotShadow {
+  top: 74.35%;
+  bottom: 19.07%;
+  left: 50%;
+  width: 121.241px;
+  transform: translateX(-50%);
+}
+
+.sparkleLayer {
+  position: absolute;
+  top: -91px;
+  left: 315px;
+  width: 297px;
+  height: 325.881px;
+}
+
+.sparkleLarge {
+  top: 132px;
+  left: 246px;
+  width: 15.46px;
+  height: 15.46px;
+}
+
+.sparkleSmall {
+  top: 78px;
+  left: 75px;
+  width: 6.51px;
+  height: 6.51px;
+}
+
+.coinLayer {
+  position: absolute;
+  top: -30px;
+  left: 311.43px;
+  width: 300.14px;
+  height: 165.32px;
+  pointer-events: none;
+}
+
+.coinUsdc,
+.coinUsdt,
+.coinStellar,
+.walletCoin,
+.cashCoin {
+  position: absolute;
+  will-change: transform;
+}
+
+.coinUsdc {
+  top: 32.51px;
+  left: 55.73px;
+  width: 40.878px;
+  height: 57.785px;
+}
+
+.usdcCoinShape {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.usdcCoinShapeInner {
+  display: flex;
+  transform: rotate(-108.05deg) scaleY(-1);
+}
+
+.usdcCoinShapeAsset {
+  position: relative;
+  width: 52.322px;
+  height: 25.94px;
+}
+
+.usdcCoinLogo {
+  position: absolute;
+  top: 15.04px;
+  left: 8.93px;
+  display: flex;
+  width: 25.341px;
+  height: 25.835px;
+  align-items: center;
+  justify-content: center;
+}
+
+.usdcCoinLogoInner {
+  display: flex;
+  transform: rotate(21.8deg) skewX(42.5deg) scaleY(0.74);
+}
+
+.usdcCoinLogoAsset {
+  position: relative;
+  width: 19.769px;
+  height: 19.769px;
+}
+
+.coinUsdt {
+  top: 35.3px;
+  left: 185.77px;
+  width: 63.336px;
+  height: 56.6px;
+}
+
+.usdtCoinShape {
+  position: absolute;
+  top: 2.75px;
+  left: 1.36px;
+  display: flex;
+  width: 60.609px;
+  height: 51.1px;
+  align-items: center;
+  justify-content: center;
+}
+
+.usdtCoinShapeInner {
+  display: flex;
+  transform: rotate(-30.83deg);
+}
+
+.usdtCoinShapeAsset {
+  position: relative;
+  width: 54.466px;
+  height: 27.003px;
+}
+
+.usdtCoinLogo {
+  position: absolute;
+  top: 16.17px;
+  left: 9.57px;
+  display: flex;
+  width: 44.615px;
+  height: 20.79px;
+  align-items: center;
+  justify-content: center;
+}
+
+.usdtCoinLogoInner {
+  display: flex;
+  transform: rotate(27.65deg) skewX(-40.03deg) scaleY(0.77);
+}
+
+.usdtCoinLogoAsset {
+  position: relative;
+  width: 24.637px;
+  height: 24.637px;
+}
+
+.coinStellar {
+  top: 0;
+  left: 117.03px;
+  width: 65.495px;
+  height: 46.782px;
+}
+
+.stellarCoinShape {
+  position: absolute;
+  top: 0.63px;
+  left: 1.27px;
+  display: flex;
+  width: 62.954px;
+  height: 45.522px;
+  align-items: center;
+  justify-content: center;
+}
+
+.stellarCoinShapeInner {
+  display: flex;
+  transform: rotate(160.49deg) scaleY(-1);
+}
+
+.stellarCoinShapeAsset {
+  position: relative;
+  width: 56.809px;
+  height: 28.165px;
+}
+
+.stellarCoinLogo {
+  position: absolute;
+  top: 11.86px;
+  left: 17.72px;
+  display: flex;
+  width: 22.793px;
+  height: 23.197px;
+  align-items: center;
+  justify-content: center;
+}
+
+.stellarCoinLogoInner {
+  display: flex;
+  transform: rotate(-17.35deg) skewX(-33.69deg) scaleY(0.83);
+}
+
+.stellarCoinLogoAsset {
+  position: relative;
+  width: 18.443px;
+  height: 18.443px;
+}
+
+.walletCoin {
+  top: 117.04px;
+  left: 256.36px;
+  display: flex;
+  width: 43.776px;
+  height: 43.776px;
+  align-items: center;
+  justify-content: center;
+}
+
+.walletRotation {
+  display: flex;
+  transform: rotate(-9.37deg);
+}
+
+.walletViewport {
+  position: relative;
+  width: 38.083px;
+  height: 38.083px;
+  overflow: hidden;
+}
+
+.walletAsset {
+  position: absolute;
+  inset: 12.5% 5.21% 14.58% 8.33%;
+}
+
+.cashCoin {
+  top: 111.46px;
+  left: 0;
+  display: flex;
+  width: 53.857px;
+  height: 53.857px;
+  align-items: center;
+  justify-content: center;
+}
+
+.cashRotation {
+  display: flex;
+  transform: rotate(45.14deg);
+}
+
+.cashViewport {
+  position: relative;
+  width: 38.083px;
+  height: 38.083px;
+  overflow: hidden;
+}
+
+.cashAsset {
+  position: absolute;
+  inset: -15.31% -14.55% -14.36% -15.12%;
+}
+
+.heroCopy {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  font-style: normal;
+  font-weight: 500;
+  text-align: center;
+  word-break: break-word;
+}
+
+.heroCopy h1 {
+  width: 923px;
+  color: var(--heading);
+  font-size: 100px;
+  font-weight: 500;
+  letter-spacing: -2px;
+  line-height: 0.9;
+  white-space: pre-wrap;
+}
+
+.heroCopy h1 span {
+  display: block;
+}
+
+.heroCopy p {
+  width: 390px;
+  height: 26px;
+  color: var(--muted);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 26px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+/*
+ * Figma uses SF Pro Display, which is supplied by Apple rather than licensed
+ * for redistribution. Keep the exact Figma type values when it is available,
+ * and compensate only for the wider Linux/Windows fallback metrics.
+ */
+.page[data-font-rendering="fallback"] .heroCopy h1 {
+  font-size: 98px;
+  line-height: 90px;
+}
+
+.page[data-font-rendering="fallback"] .heroCopy h1 span:first-child {
+  transform: translateX(2.5px) scaleX(0.985);
+}
+
+.page[data-font-rendering="fallback"] .heroCopy h1 span:last-child {
+  transform: translateX(-1px) scaleX(0.998);
+}
+
+.page[data-font-rendering="fallback"] .heroCopy p {
+  width: 390px;
+  letter-spacing: -0.3px;
+}
+
+.page[data-font-rendering="fallback"] .emailInput {
+  letter-spacing: -0.45px;
+}
+
+.waitlistForm {
+  position: absolute;
+  top: 763px;
+  left: calc(50% - 0.5px);
+  width: 533px;
+  height: 56px;
+  overflow: visible;
+  border-radius: 44px;
+  background: var(--input-background);
+  transform: translateX(-50%);
+}
+
+.emailInput {
+  width: 100%;
+  height: 100%;
+  padding: 0 161px 0 32px;
+  border: 0;
+  border-radius: inherit;
+  outline: 0;
+  background: transparent;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+}
+
+.emailInput::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+
+.emailInput:focus-visible {
+  box-shadow: inset 0 0 0 2px #76b101;
+}
+
+.submitButton {
+  position: absolute;
+  top: 6px;
+  left: 398px;
+  display: flex;
+  width: 129px;
+  height: 45px;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  border: 0;
+  border-radius: 100px;
+  background: #020202;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.submitButton:focus-visible {
+  outline: 3px solid #76b101;
+  outline-offset: 2px;
+}
+
+.submitButton:disabled,
+.emailInput:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.formMessage {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  width: min(533px, calc(100vw - 40px));
+  transform: translateX(-50%);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  text-align: center;
+}
+
+.successMessage {
+  color: #5d8c00;
+}
+
+.page[data-theme="dark"] .successMessage {
+  color: #8bcf14;
+}
+
+.errorMessage {
+  color: #b42318;
+}
+
+.page[data-theme="dark"] .errorMessage {
+  color: #ff8c82;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.page[data-theme="light"] .coinUsdc { animation: coin-usdc-light 3.7s infinite; }
+.page[data-theme="light"] .coinUsdt { animation: coin-usdt-light 3.7s infinite; }
+.page[data-theme="light"] .coinStellar { animation: coin-stellar-light 3.7s infinite; }
+.page[data-theme="light"] .walletCoin { animation: wallet-light 3.7s infinite; }
+.page[data-theme="light"] .cashCoin { animation: cash-light 3.7s infinite; }
+.page[data-theme="dark"] .coinUsdc { animation: coin-usdc-dark 2s infinite; }
+.page[data-theme="dark"] .coinUsdt { animation: coin-usdt-dark 2s infinite; }
+.page[data-theme="dark"] .coinStellar { animation: coin-stellar-dark 2s infinite; }
+.page[data-theme="dark"] .walletCoin { animation: wallet-dark 2s infinite; }
+.page[data-theme="dark"] .cashCoin { animation: cash-dark 2s infinite; }
+
+@keyframes coin-usdc-light {
+  0% { transform: translateY(0); animation-timing-function: ease-in-out; }
+  18.92% { transform: translateY(-12px); animation-timing-function: ease-in-out; }
+  37.84% { transform: translateY(0); animation-timing-function: ease-in-out; }
+  56.76% { transform: translateY(12px); animation-timing-function: ease-in-out; }
+  75.68% { transform: translateY(0); animation-timing-function: linear; }
+  100% { transform: translateY(0); }
+}
+
+@keyframes coin-usdt-light {
+  0% { transform: translateY(0); animation-timing-function: linear; }
+  10.81% { transform: translateY(0); animation-timing-function: ease-in-out; }
+  32.43% { transform: translateY(-10px); animation-timing-function: ease-in-out; }
+  54.05% { transform: translateY(0); animation-timing-function: ease-in-out; }
+  75.68% { transform: translateY(10px); animation-timing-function: ease-in-out; }
+  97.3% { transform: translateY(0); animation-timing-function: linear; }
+  100% { transform: translateY(0); }
+}
+
+@keyframes coin-stellar-light {
+  0% { transform: translateY(0); animation-timing-function: linear; }
+  5.41% { transform: translateY(0); animation-timing-function: ease-in-out; }
+  25.68% { transform: translateY(-14px); animation-timing-function: ease-in-out; }
+  45.95% { transform: translateY(0); animation-timing-function: ease-in-out; }
+  66.22% { transform: translateY(14px); animation-timing-function: ease-in-out; }
+  86.49% { transform: translateY(0); animation-timing-function: linear; }
+  100% { transform: translateY(0); }
+}
+
+@keyframes wallet-light {
+  0% { transform: translateY(0); animation-timing-function: linear; }
+  16.22% { transform: translateY(0); animation-timing-function: ease-in-out; }
+  33.78% { transform: translateY(-8px); animation-timing-function: ease-in-out; }
+  51.35% { transform: translateY(0); animation-timing-function: ease-in-out; }
+  68.92% { transform: translateY(8px); animation-timing-function: ease-in-out; }
+  86.49% { transform: translateY(0); animation-timing-function: linear; }
+  100% { transform: translateY(0); }
+}
+
+@keyframes cash-light {
+  0% { transform: translateY(0); animation-timing-function: linear; }
+  8.11% { transform: translateY(0); animation-timing-function: ease-in-out; }
+  31.08% { transform: translateY(-10px); animation-timing-function: ease-in-out; }
+  54.05% { transform: translateY(0); animation-timing-function: ease-in-out; }
+  77.03% { transform: translateY(10px); animation-timing-function: ease-in-out; }
+  100% { transform: translateY(0); }
+}
+
+@keyframes coin-usdc-dark {
+  0% { transform: translateY(0); animation-timing-function: ease-in-out; }
+  35% { transform: translateY(-12px); animation-timing-function: ease-in-out; }
+  70% { transform: translateY(0); animation-timing-function: linear; }
+  95% { transform: translateY(9.964px); animation-timing-function: linear; }
+  99.98% { transform: translateY(11.509px); animation-timing-function: linear; }
+  99.99% { transform: translateY(12px); animation-timing-function: ease-in-out; }
+  100% { transform: translateY(0); }
+}
+
+@keyframes coin-usdt-dark {
+  0% { transform: translateY(0); animation-timing-function: linear; }
+  20% { transform: translateY(0); animation-timing-function: ease-in-out; }
+  60% { transform: translateY(-10px); animation-timing-function: ease-in-out; }
+  99.98% { transform: translateY(0); animation-timing-function: ease-in-out; }
+  99.99% { transform: translateY(10px); animation-timing-function: ease-in-out; }
+  100% { transform: translateY(0); }
+}
+
+@keyframes coin-stellar-dark {
+  0% { transform: translateY(0); animation-timing-function: linear; }
+  10% { transform: translateY(0); animation-timing-function: ease-in-out; }
+  47.5% { transform: translateY(-14px); animation-timing-function: ease-in-out; }
+  85% { transform: translateY(0); animation-timing-function: linear; }
+  99.98% { transform: translateY(4.646px); animation-timing-function: linear; }
+  99.99% { transform: translateY(14px); animation-timing-function: ease-in-out; }
+  100% { transform: translateY(0); }
+}
+
+@keyframes wallet-dark {
+  0% { transform: translateY(0); animation-timing-function: linear; }
+  30% { transform: translateY(0); animation-timing-function: ease-in-out; }
+  62.5% { transform: translateY(-8px); animation-timing-function: ease-in-out; }
+  95% { transform: translateY(0); animation-timing-function: linear; }
+  99.97% { transform: translateY(0.381px); animation-timing-function: linear; }
+  99.98% { transform: translateY(7.907px); animation-timing-function: linear; }
+  99.99% { transform: translateY(8px); animation-timing-function: ease-in-out; }
+  100% { transform: translateY(0); }
+}
+
+@keyframes cash-dark {
+  0% { transform: translateY(0); animation-timing-function: linear; }
+  15% { transform: translateY(0); animation-timing-function: ease-in-out; }
+  57.5% { transform: translateY(-10px); animation-timing-function: ease-in-out; }
+  99.98% { transform: translateY(0); animation-timing-function: ease-in-out; }
+  99.99% { transform: translateY(10px); animation-timing-function: ease-in-out; }
+  100% { transform: translateY(0); }
+}
+
+@media (max-width: 900px) {
+  .page {
+    min-height: max(100svh, 820px);
+    overflow-y: auto;
+  }
+
+  .header {
+    top: 24px;
+    width: 100%;
+    padding: 0 24px;
+  }
+
+  .logo {
+    width: 132px;
+    height: auto;
+  }
+
+  .themeToggle {
+    gap: 3px;
+    padding: 4px;
+  }
+
+  .sunOption,
+  .moonOption {
+    width: 40px;
+    height: 40px;
+    flex-basis: 40px;
+  }
+
+  .sunIcon,
+  .moonIcon {
+    width: 27px;
+    height: 27px;
+  }
+
+  .hero {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    margin: 132px auto 0;
+    transform: none;
+  }
+
+  .mascotFrame {
+    margin-bottom: -89px;
+    transform: scale(0.85);
+    transform-origin: top center;
+  }
+
+  .sparkleLayer,
+  .coinLayer {
+    transform: scale(0.85);
+    transform-origin: top center;
+  }
+
+  .sparkleLayer {
+    left: calc(50% - 148.5px);
+  }
+
+  .coinLayer {
+    left: calc(50% - 150.07px);
+  }
+
+  .heroCopy h1 {
+    width: min(923px, calc(100vw - 32px));
+    font-size: clamp(48px, 11.2vw, 78px);
+    letter-spacing: -0.02em;
+    line-height: 0.92;
+  }
+
+  .page[data-font-rendering="fallback"] .heroCopy h1 {
+    font-size: clamp(48px, 10.9vw, 76px);
+    line-height: 0.92;
+  }
+
+  .heroCopy p {
+    width: min(390px, calc(100vw - 40px));
+    height: auto;
+    font-size: clamp(14px, 4.1vw, 16px);
+    line-height: 24px;
+    text-align: center;
+  }
+
+
+  .page[data-font-rendering="fallback"] .heroCopy p {
+    width: min(390px, calc(100vw - 40px));
+  }
+
+  .waitlistForm {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: min(533px, calc(100% - 40px));
+    margin: 72px auto 80px;
+    transform: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .header { padding: 0 18px; }
+  .logo { width: 112px; }
+  .themeToggle { padding: 3px; }
+  .sunOption,
+  .moonOption { width: 34px; height: 34px; flex-basis: 34px; }
+  .sunIcon,
+  .moonIcon { width: 23px; height: 23px; }
+  .hero { margin-top: 120px; }
+  .heroCopy h1 { font-size: clamp(42px, 13vw, 60px); }
+  .waitlistForm { height: 54px; }
+  .emailInput { padding-right: 137px; padding-left: 22px; font-size: 13px; }
+  .submitButton {
+    top: 5px;
+    right: 5px;
+    left: auto;
+    width: 124px;
+    height: 44px;
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+}
+
+@media (max-height: 900px) and (min-width: 901px) {
+  .page {
+    height: 100svh;
+    min-height: 100svh;
+    overflow: hidden;
+  }
+  .header { top: 24px; }
+  .hero {
+    top: 130px;
+    transform: translateX(-50%) scale(0.82);
+    transform-origin: top center;
+  }
+  .waitlistForm { top: 595px; }
+}
+
+@media (max-height: 700px) and (min-width: 901px) {
+  .hero {
+    top: 110px;
+    transform: translateX(-50%) scale(0.64);
+  }
+
+  .waitlistForm { top: 472px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .coinUsdc,
+  .coinUsdt,
+  .coinStellar,
+  .walletCoin,
+  .cashCoin {
+    animation: none !important;
+    will-change: auto;
+  }
+}
