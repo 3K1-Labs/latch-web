@@ -4,7 +4,7 @@ import { getResendConfiguration, type ResendConfiguration } from "./config";
 import { ConfirmationEmailError, type ConfirmationEmailSender } from "./service";
 
 const RESEND_EMAILS_ENDPOINT = "https://api.resend.com/emails";
-const RESEND_TIMEOUT_MS = 10_000;
+const RESEND_TIMEOUT_MS = 30_000;
 
 type ResendResponseClassification = "success" | "definite" | "ambiguous-or-retryable";
 
@@ -68,18 +68,23 @@ export class ResendConfirmationEmailSender implements ConfirmationEmailSender {
     const body: Record<string, unknown> = {
       from: this.configuration.fromEmail,
       to: [email],
-      subject: "Confirm your place on Latch's Road to Mainnet",
+      subject: "Confirm your Latch waitlist signup",
       text: [
-        "Confirm your place on Latch's Road to Mainnet waitlist.",
+        "You requested to join the Latch waitlist.",
         "",
-        `Confirm your email: ${confirmationUrl.toString()}`,
+        "Confirm your email to complete your signup:",
+        confirmationUrl.toString(),
         "",
-        "If you did not request this, you can ignore this email.",
+        "This confirmation link expires in 24 hours.",
+        "If you didn't request this signup, you can safely ignore this email.",
       ].join("\n"),
       html: [
-        "<p>Confirm your place on Latch&rsquo;s Road to Mainnet waitlist.</p>",
-        `<p><a href="${safeUrl}">Confirm your email</a></p>`,
-        "<p>If you did not request this, you can ignore this email.</p>",
+        "<h1>Confirm your email</h1>",
+        "<p>You requested to join the Latch waitlist.</p>",
+        `<p><a href="${safeUrl}">Confirm email</a></p>`,
+        `<p>Or copy and paste this link into your browser:<br><a href="${safeUrl}">${safeUrl}</a></p>`,
+        "<p>This confirmation link expires in 24 hours.</p>",
+        "<p>If you didn&rsquo;t request this signup, you can safely ignore this email.</p>",
       ].join(""),
     };
 

@@ -111,6 +111,10 @@ describe("Resend response classification", () => {
     expect(new Headers(request?.headers).get("Idempotency-Key")).toBe(
       `waitlist-confirmation/${EMAIL_INPUT.tokenHash}`,
     );
+    const body = JSON.parse(String(request?.body)) as Record<string, unknown>;
+    expect(body.subject).toBe("Confirm your Latch waitlist signup");
+    expect(body.text).toContain("You requested to join the Latch waitlist.");
+    expect(body.html).toContain("https://uselatch.app/waitlist/confirm?token=");
   });
 });
 

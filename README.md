@@ -35,8 +35,9 @@ if it doesn't pass.
 ## Native waitlist backend
 
 The waitlist API uses Neon Postgres through Drizzle and sends double-opt-in
-confirmation email through Resend. The homepage does not call these endpoints
-yet; the final signup UI will be integrated separately.
+confirmation email through Resend. The homepage posts signups to the native API,
+and the confirmation landing page requires an explicit action before confirming
+the subscription.
 
 ### Server environment
 
@@ -58,6 +59,11 @@ WAITLIST_CONSENT_VERSION=road-to-mainnet-v1
 for `http://localhost` during local development. Generate the unsubscribe
 secret with a cryptographically secure tool, for example `openssl rand -base64
 32`.
+
+For production deliverability, use the public `https://uselatch.app` origin and
+a Resend-verified sender on the same `uselatch.app` domain. A real email sent
+from another domain with a localhost confirmation link is useful for functional
+testing, but mailbox providers may classify that domain/link mismatch as spam.
 
 Use a pooled, least-privileged Neon connection for `DATABASE_URL`. Keep the
 owner or migration connection separate in `DATABASE_MIGRATION_URL` and apply

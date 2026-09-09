@@ -1,20 +1,5 @@
-import Image from 'next/image';
+import { WaitlistPage } from "./waitlist-page";
 
 export default function Home() {
-  return (
-    <main
-      style={{
-        minHeight: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        gap: '1.5rem',
-        fontFamily: 'system-ui, sans-serif',
-        background: '#0a0a0a',
-      }}
-    >
-      <Image src="/latch.png" alt="Latch" width={96} height={96} priority style={{ borderRadius: '20%' }} />
-    </main>
-  );
+  return <WaitlistPage />;
 }
