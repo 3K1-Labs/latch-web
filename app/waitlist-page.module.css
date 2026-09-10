@@ -114,7 +114,7 @@
   top: 198px;
   left: calc(50% - 0.5px);
   display: flex;
-  width: 923px;
+  width: min(923px, calc(100% - 32px));
   flex-direction: column;
   align-items: center;
   transform: translateX(-50%);
@@ -165,7 +165,7 @@
 .sparkleLayer {
   position: absolute;
   top: -91px;
-  left: 315px;
+  left: calc(50% - 148.5px);
   width: 297px;
   height: 325.881px;
 }
@@ -187,7 +187,7 @@
 .coinLayer {
   position: absolute;
   top: -30px;
-  left: 311.43px;
+  left: calc(50% - 150.07px);
   width: 300.14px;
   height: 165.32px;
   pointer-events: none;
@@ -408,6 +408,7 @@
 
 .heroCopy {
   display: flex;
+  width: 100%;
   flex-direction: column;
   gap: 12px;
   align-items: center;
@@ -418,9 +419,9 @@
 }
 
 .heroCopy h1 {
-  width: 923px;
+  width: 100%;
   color: var(--heading);
-  font-size: 100px;
+  font-size: clamp(78px, 6.944vw, 100px);
   font-weight: 500;
   letter-spacing: -2px;
   line-height: 0.9;
@@ -448,8 +449,8 @@
  * and compensate only for the wider Linux/Windows fallback metrics.
  */
 .page[data-font-rendering="fallback"] .heroCopy h1 {
-  font-size: 98px;
-  line-height: 90px;
+  font-size: clamp(76px, 6.806vw, 98px);
+  line-height: 0.9184;
 }
 
 .page[data-font-rendering="fallback"] .heroCopy h1 span:first-child {
@@ -784,6 +785,32 @@
   }
 }
 
+@media (max-width: 900px) and (min-height: 641px) {
+  .page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+  }
+
+  .waitlistForm {
+    position: relative;
+    top: auto;
+    bottom: auto;
+    left: auto;
+    flex: 0 0 auto;
+    margin: 64px 0 0;
+    transform: none;
+  }
+}
+
 @media (max-width: 520px) {
   .header { padding: 0 18px; }
   .logo { width: 112px; }
@@ -803,6 +830,78 @@
     height: 44px;
     padding: 10px 16px;
     font-size: 14px;
+  }
+}
+
+@media (max-width: 319px) {
+  .header { padding: 0 12px; }
+  .logo { width: 100px; }
+  .sunOption,
+  .moonOption { width: 30px; height: 30px; flex-basis: 30px; }
+  .sunIcon,
+  .moonIcon { width: 20px; height: 20px; }
+
+  .heroCopy h1,
+  .page[data-font-rendering="fallback"] .heroCopy h1 {
+    font-size: clamp(34px, 12vw, 38px);
+    line-height: 0.96;
+  }
+
+  .heroCopy p,
+  .page[data-font-rendering="fallback"] .heroCopy p {
+    width: calc(100vw - 24px);
+    font-size: 12.5px;
+    line-height: 18px;
+    white-space: normal;
+    text-wrap: balance;
+  }
+
+  .waitlistForm {
+    width: calc(100% - 24px);
+  }
+
+  .emailInput {
+    padding-right: 124px;
+    padding-left: 16px;
+    font-size: 12px;
+  }
+
+  .submitButton {
+    width: 112px;
+    padding-inline: 12px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 319px) and (min-height: 641px) {
+  .waitlistForm {
+    margin-top: 48px;
+  }
+}
+
+@media (min-width: 901px) and (min-height: 901px) {
+  .page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 7px;
+  }
+
+  .hero {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+  }
+
+  .waitlistForm {
+    position: relative;
+    top: auto;
+    left: auto;
+    flex: 0 0 auto;
+    margin: 95px 0 0;
+    transform: none;
   }
 }
 
@@ -838,6 +937,19 @@
   }
 }
 
+@media (max-width: 900px) and (max-height: 520px) {
+  .header { top: 14px; }
+
+  .hero {
+    top: 68px;
+    transform: translateX(-50%) scale(0.68);
+  }
+
+  .waitlistForm {
+    bottom: max(42px, calc(env(safe-area-inset-bottom) + 20px));
+  }
+}
+
 @media (max-width: 900px) and (max-height: 450px) {
   .header { top: 12px; }
   .logo { width: 100px; }
@@ -857,6 +969,31 @@
   }
 }
 
+@media (max-width: 900px) and (max-height: 370px) {
+  .hero {
+    top: 48px;
+    transform: translateX(-50%) scale(0.52);
+  }
+}
+
+@media (max-width: 900px) and (max-height: 330px) {
+  .header { top: 8px; }
+  .logo { width: 92px; }
+  .sunOption,
+  .moonOption { width: 28px; height: 28px; flex-basis: 28px; }
+  .sunIcon,
+  .moonIcon { width: 19px; height: 19px; }
+
+  .hero {
+    top: 42px;
+    transform: translateX(-50%) scale(0.42);
+  }
+
+  .waitlistForm {
+    bottom: max(34px, calc(env(safe-area-inset-bottom) + 14px));
+  }
+}
+
 @media (max-height: 560px) and (min-width: 901px) {
   .header { top: 14px; }
 
@@ -869,6 +1006,34 @@
     top: auto;
     bottom: 42px;
   }
+}
+
+@media (max-height: 450px) and (min-width: 901px) {
+  .header { top: 12px; }
+  .logo { width: 110px; height: auto; }
+  .themeToggle { padding: 3px; }
+  .sunOption,
+  .moonOption { width: 32px; height: 32px; flex-basis: 32px; }
+  .sunIcon,
+  .moonIcon { width: 21px; height: 21px; }
+
+  .hero {
+    top: 54px;
+    transform: translateX(-50%) scale(0.38);
+  }
+
+  .waitlistForm {
+    bottom: 38px;
+  }
+}
+
+@media (max-height: 330px) and (min-width: 901px) {
+  .header { top: 8px; }
+  .hero {
+    top: 42px;
+    transform: translateX(-50%) scale(0.3);
+  }
+  .waitlistForm { bottom: 34px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
