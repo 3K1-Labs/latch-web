@@ -5,9 +5,14 @@
   --muted: #706f6f;
   --toggle-background: #f3f3f3;
   --toggle-shadow: inset -3px 2px 4px rgb(0 0 0 / 12%);
-  position: relative;
-  min-height: max(100svh, 1024px);
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 0;
   overflow: hidden;
+  overscroll-behavior: none;
   background: var(--page-background);
   color: var(--heading);
   font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial,
@@ -680,8 +685,8 @@
 
 @media (max-width: 900px) {
   .page {
-    min-height: max(100svh, 820px);
-    overflow-y: auto;
+    min-height: 0;
+    overflow: hidden;
   }
 
   .header {
@@ -714,12 +719,13 @@
   }
 
   .hero {
-    position: relative;
-    top: auto;
-    left: auto;
+    position: absolute;
+    top: 120px;
+    left: 50%;
     width: 100%;
-    margin: 132px auto 0;
-    transform: none;
+    margin: 0;
+    transform: translateX(-50%);
+    transform-origin: top center;
   }
 
   .mascotFrame {
@@ -768,12 +774,13 @@
   }
 
   .waitlistForm {
-    position: relative;
+    position: absolute;
     top: auto;
-    left: auto;
+    bottom: max(56px, calc(env(safe-area-inset-bottom) + 28px));
+    left: 50%;
     width: min(533px, calc(100% - 40px));
-    margin: 72px auto 80px;
-    transform: none;
+    margin: 0;
+    transform: translateX(-50%);
   }
 }
 
@@ -785,7 +792,6 @@
   .moonOption { width: 34px; height: 34px; flex-basis: 34px; }
   .sunIcon,
   .moonIcon { width: 23px; height: 23px; }
-  .hero { margin-top: 120px; }
   .heroCopy h1 { font-size: clamp(42px, 13vw, 60px); }
   .waitlistForm { height: 54px; }
   .emailInput { padding-right: 137px; padding-left: 22px; font-size: 13px; }
@@ -801,11 +807,6 @@
 }
 
 @media (max-height: 900px) and (min-width: 901px) {
-  .page {
-    height: 100svh;
-    min-height: 100svh;
-    overflow: hidden;
-  }
   .header { top: 24px; }
   .hero {
     top: 130px;
@@ -822,6 +823,52 @@
   }
 
   .waitlistForm { top: 472px; }
+}
+
+@media (max-width: 900px) and (max-height: 600px) {
+  .header { top: 16px; }
+
+  .hero {
+    top: 82px;
+    transform: translateX(-50%) scale(0.82);
+  }
+
+  .waitlistForm {
+    bottom: max(48px, calc(env(safe-area-inset-bottom) + 24px));
+  }
+}
+
+@media (max-width: 900px) and (max-height: 450px) {
+  .header { top: 12px; }
+  .logo { width: 100px; }
+  .themeToggle { padding: 3px; }
+  .sunOption,
+  .moonOption { width: 32px; height: 32px; flex-basis: 32px; }
+  .sunIcon,
+  .moonIcon { width: 21px; height: 21px; }
+
+  .hero {
+    top: 54px;
+    transform: translateX(-50%) scale(0.58);
+  }
+
+  .waitlistForm {
+    bottom: max(38px, calc(env(safe-area-inset-bottom) + 18px));
+  }
+}
+
+@media (max-height: 560px) and (min-width: 901px) {
+  .header { top: 14px; }
+
+  .hero {
+    top: 72px;
+    transform: translateX(-50%) scale(0.48);
+  }
+
+  .waitlistForm {
+    top: auto;
+    bottom: 42px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
